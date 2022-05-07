@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title style="text-align: center">
+      Ionic Wizzard
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding>
+<div swing-stack #myswing1 [stackConfig]="stackConfig" (throwoutleft)="this.myVote(true)" (throwoutright)="this.myVote(false)" id="card-stack">
+    <ion-row *ngIf="i < 84">
+    <ion-card #mycards1 swing-card *ngFor="let c of cards">
+      <ion-card-content >
+       <h1 style="text-align: center">{{myQuestions}}
+      </h1>
+      </ion-card-content>
+      <ion-row >
+        <ion-col>
+          <button ion-button clear small float-left color="primary" (click)="this.myVote(true)">
+            <ion-icon name="thumbs-up"></ion-icon>
+            Yes
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button clear small float-right color="primary" (click)="this.myVote(false)">
+            <ion-icon name="thumbs-down"></ion-icon>
+            No
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    </ion-row>
+  </div>
+  
+  <p style="text-align: center; width: 100%;">{{ recentCard }}</p>
+<ion-row>
+</ion-row>
+<ion-row justify-content-center *ngIf="i > 83">
+
+  <h5>Results</h5>
+  
+  <p>E={{answerE}}
+  I={{answerI}} 
+  S={{answerS}} 
+  N={{answerN}} 
+  T={{answerT}} 
+  F={{answerF}} 
+  J={{answerJ}} 
+  P={{answerP}}</p>
+</ion-row>
+
+<ion-row justify-content-center *ngIf="i > 83" >
+<button ion-button color="secondary" (click)=showResult()>Calculate</button>
+</ion-row>
+
+<ion-row justify-content-center >
+<p>{{profile}}</p> 
+</ion-row>
+<ion-row justify-content-center *ngIf="man == 0 && woman == 0"> 
+<button ion-button color="primary" (click)=male()>Male</button><button ion-button color="primary" (click)=female()>Female</button></ion-row>
+
+</ion-content>
